@@ -1,28 +1,33 @@
-# Firebase build and deployment files
-/firebase-debug.log
-/firebase-debug.*.log
-.firebaserc
+# Dependências
+node_modules/
 
-# Firebase Hosting
-/firebase.json
+# Next.js / Build
+.next/
+out/
+build/
+dist/
 *.cache
-hosting/.cache
 
-# Firebase Functions
-/functions/node_modules/
-/functions/.env
-/functions/package-lock.json
+# Ficheiros de Ambiente (NUNCA enviar para o GitHub)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
 
-# Firebase Emulators
-/firebase-*.zip
-/.firebase/
-/emulator-ui/
+# Supabase (Ficheiros gerados pela CLI local)
+supabase/.temp/
+supabase/.branches/
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Environment files (local configs)
-/.env.*
+# Ficheiros do Sistema Operativo
+.DS_Store
+*.pem
+.vscode/
