@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Search, Plus, PlayCircle, Eye, RefreshCcw, Bell } from "lucide-react";
+import { Search, Plus, PlayCircle, Eye, RefreshCcw, Bell, Download } from "lucide-react";
 
 export default function DashboardPage() {
   return (
@@ -12,7 +12,6 @@ export default function DashboardPage() {
         <nav className="flex flex-col gap-6 text-gray-500">
           <Button variant="ghost" size="icon" className="text-white bg-white/10 hover:bg-white/20"><PlayCircle size={20} /></Button>
           <Button variant="ghost" size="icon" className="hover:text-white"><Bell size={20} /></Button>
-          {/* Adicionar outros ícones do menu aqui */}
         </nav>
       </aside>
 
@@ -24,7 +23,7 @@ export default function DashboardPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
             <input 
               type="text" 
-              placeholder="Buscar cliente ou projeto..." 
+              placeholder="Buscar cliente ou pagamento..." 
               className="w-full bg-[#141414] border border-gray-800 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-gray-500 transition-colors"
             />
           </div>
@@ -48,7 +47,7 @@ export default function DashboardPage() {
         </header>
 
         {/* Grelha do Dashboard */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 mb-6">
           
           {/* Coluna Esquerda (Gráficos) */}
           <div className="col-span-2 space-y-6">
@@ -58,88 +57,106 @@ export default function DashboardPage() {
                 <div>
                   <h2 className="text-gray-400 text-sm flex items-center gap-2 mb-1">
                     <span className="w-2 h-2 bg-gray-500 rounded-full"></span>
-                    Lucro no periodo
+                    Receita total
                   </h2>
-                  <p className="text-4xl font-bold">R$ 0 <span className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded ml-2 font-medium">↗ 0%</span></p>
+                  <p className="text-4xl font-bold">R$ 4.700,00 <span className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded ml-2 font-medium">↗ 12%</span></p>
                 </div>
                 <Button className="bg-[#1a1a1a] text-white hover:bg-gray-800 rounded-full border border-gray-700">
-                  Gerar resumo do periodo
+                  Gerar relatório
                 </Button>
               </div>
-              <div className="h-48 w-full border-b border-gray-800 flex items-end pb-2">
+              <div className="h-24 w-full border-b border-gray-800 flex items-end pb-2">
                 <div className="w-full h-1 bg-gradient-to-r from-gray-800 to-gray-300 rounded-full"></div>
               </div>
             </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              {/* Banner de Próxima Venda */}
-              <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
-                <h3 className="text-xl font-bold mb-2 relative z-10">Sua próxima venda começa agora.</h3>
-                <p className="text-sm text-gray-400 mb-8 relative z-10">2 empresas esperando seu próximo movimento.</p>
-                <Button className="w-full bg-white text-black hover:bg-gray-200 relative z-10 rounded-xl font-medium">
-                  Registrar cliente
-                </Button>
-              </div>
-
-              {/* Lucro por período */}
-              <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6">
-                <h3 className="text-sm text-gray-400 mb-2">Lucro por período</h3>
-                <p className="text-2xl font-bold mb-6">R$ 0 <span className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded font-medium">↗ 0%</span></p>
-                <div className="flex justify-between items-end h-24">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="w-8 h-2 bg-gray-800 rounded-t-sm border-t border-gray-700"></div>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Coluna Direita (Carteira e Vendas) */}
-          <div className="col-span-1 space-y-6">
-            {/* Carteira */}
-            <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6">
+          {/* Coluna Direita (Ações Rápidas) */}
+          <div className="col-span-1">
+            <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6 h-full flex flex-col justify-center">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="font-semibold text-lg">Minha carteira</h2>
-                <Button size="sm" className="bg-white text-black hover:bg-gray-200 rounded-full font-medium">
-                  <Plus size={14} className="mr-1" /> Nova venda
-                </Button>
+                <h2 className="font-semibold text-lg">Ações de Pagamento</h2>
               </div>
-              
-              {/* Cartão Virtual */}
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-black p-5 rounded-xl border border-gray-800 shadow-xl mb-6 relative overflow-hidden">
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-                <div className="flex justify-between items-start mb-8">
-                  <div className="font-mono text-xl tracking-widest text-gray-500">{'</>'}</div>
-                  <div className="w-8 h-6 bg-gray-700 rounded-sm opacity-50"></div>
-                </div>
-                <p className="text-xs text-gray-500 mb-1">Lucro disponível</p>
-                <p className="text-2xl font-bold">R$ 0 <span className="text-xs text-green-500 bg-green-500/10 px-2 py-1 rounded ml-2 font-medium">↗ 0%</span></p>
-              </div>
-
-              <div className="flex gap-2">
-                <Button variant="outline" className="flex-1 bg-transparent border-gray-700 text-white hover:bg-gray-800 rounded-xl">Cliente</Button>
-                <Button className="flex-1 bg-white text-black hover:bg-gray-200 rounded-xl font-medium">Venda</Button>
-              </div>
+              <Button className="w-full bg-white text-black hover:bg-gray-200 rounded-xl font-medium mb-3 py-6">
+                <Plus size={18} className="mr-2" /> Nova Cobrança (Asaas)
+              </Button>
+              <Button variant="outline" className="w-full bg-transparent border-gray-700 text-white hover:bg-gray-800 rounded-xl py-6">
+                Sincronizar Supabase
+              </Button>
             </div>
+          </div>
+        </div>
 
-            {/* Vendas Recentes */}
-            <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center h-64">
-              <div className="w-full flex justify-between items-center mb-8">
-                <h3 className="font-semibold text-left">Vendas recentes</h3>
-                <span className="text-xs text-gray-400 cursor-pointer hover:text-white transition-colors">Ver todas</span>
-              </div>
-              <div className="mt-auto mb-auto">
-                <p className="font-semibold text-lg mb-1 text-gray-300">Nenhuma venda</p>
-                <p className="text-xs text-gray-500 mb-6">Seus resultados aparecerão aqui.</p>
-                <Button variant="outline" className="bg-transparent border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white rounded-full px-6">
-                  Registrar primeira venda
-                </Button>
-              </div>
+        {/* TABELA DE PAGAMENTOS */}
+        <div className="bg-[#141414] border border-gray-800 rounded-2xl p-6 flex-1">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="font-semibold text-lg">Histórico de Pagamentos</h2>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
+                <Download size={14} className="mr-2" /> Exportar
+              </Button>
             </div>
           </div>
 
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="text-gray-500 border-b border-gray-800">
+                <tr>
+                  <th className="pb-4 font-medium pl-2">Cliente / Projeto</th>
+                  <th className="pb-4 font-medium">Data de Vencimento</th>
+                  <th className="pb-4 font-medium">Método</th>
+                  <th className="pb-4 font-medium">Valor</th>
+                  <th className="pb-4 font-medium">Status</th>
+                  <th className="pb-4 font-medium text-right pr-2">Ação</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-300">
+                {/* Linha 1 */}
+                <tr className="border-b border-gray-800/50 hover:bg-white/5 transition-colors">
+                  <td className="py-4 pl-2 font-medium text-white">Lumina Studio</td>
+                  <td className="py-4 text-gray-400">13 Out 2026</td>
+                  <td className="py-4 text-gray-400">PIX</td>
+                  <td className="py-4 font-medium text-white">R$ 1.200,00</td>
+                  <td className="py-4">
+                    <span className="bg-green-500/10 text-green-500 px-2.5 py-1 rounded-full text-xs font-medium border border-green-500/20">Pago</span>
+                  </td>
+                  <td className="py-4 text-right pr-2">
+                    <Button size="sm" variant="ghost" className="h-8 text-gray-400 hover:text-white">Detalhes</Button>
+                  </td>
+                </tr>
+
+                {/* Linha 2 */}
+                <tr className="border-b border-gray-800/50 hover:bg-white/5 transition-colors">
+                  <td className="py-4 pl-2 font-medium text-white">Mobi Commerce</td>
+                  <td className="py-4 text-gray-400">15 Out 2026</td>
+                  <td className="py-4 text-gray-400">Boleto</td>
+                  <td className="py-4 font-medium text-white">R$ 3.500,00</td>
+                  <td className="py-4">
+                    <span className="bg-yellow-500/10 text-yellow-500 px-2.5 py-1 rounded-full text-xs font-medium border border-yellow-500/20">Pendente</span>
+                  </td>
+                  <td className="py-4 text-right pr-2">
+                    <Button size="sm" variant="ghost" className="h-8 text-gray-400 hover:text-white">Copiar Link</Button>
+                  </td>
+                </tr>
+
+                {/* Linha 3 */}
+                <tr className="hover:bg-white/5 transition-colors">
+                  <td className="py-4 pl-2 font-medium text-white">Nó Arquitetura</td>
+                  <td className="py-4 text-gray-400">10 Out 2026</td>
+                  <td className="py-4 text-gray-400">Cartão de Crédito</td>
+                  <td className="py-4 font-medium text-white">R$ 8.900,00</td>
+                  <td className="py-4">
+                    <span className="bg-red-500/10 text-red-500 px-2.5 py-1 rounded-full text-xs font-medium border border-red-500/20">Atrasado</span>
+                  </td>
+                  <td className="py-4 text-right pr-2">
+                    <Button size="sm" variant="ghost" className="h-8 text-gray-400 hover:text-white">Reenviar</Button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </main>
     </div>
   );
