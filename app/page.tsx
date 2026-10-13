@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Search, Plus, PlayCircle, Eye, RefreshCcw, Bell } from "lucide-react";
+import Link from "next/link";
 
 export default function DashboardPage() {
   return (
@@ -9,11 +10,17 @@ export default function DashboardPage() {
         <div className="w-8 h-8 bg-red-600 rounded-md flex items-center justify-center mb-4">
           <span className="font-bold text-white text-xs">A</span>
         </div>
-        <nav className="flex flex-col gap-6 text-gray-500">
-          <Button variant="ghost" size="icon" className="text-red-500 bg-red-500/10 hover:bg-red-500/20"><PlayCircle size={20} /></Button>
-          <Button variant="ghost" size="icon" className="hover:text-white"><Bell size={20} /></Button>
-          {/* Adicionar outros ícones do menu aqui */}
-        </nav>
+       <nav className="flex flex-col gap-6 text-gray-500">
+  <Button variant="ghost" size="icon" className="text-red-500 bg-red-500/10 hover:bg-red-500/20"><PlayCircle size={20} /></Button>
+  <Button variant="ghost" size="icon" className="hover:text-white"><Bell size={20} /></Button>
+  
+  {/* O Link com o href fica aqui na estrutura visual */}
+  <Link href="/pagamentos">
+    <Button variant="ghost" className="text-gray-500 hover:text-white text-xs">
+      Ir para Pagamentos
+    </Button>
+  </Link>
+</nav>
       </aside>
 
       {/* Conteúdo Principal */}
